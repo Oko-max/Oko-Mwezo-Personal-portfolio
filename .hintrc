@@ -3,6 +3,14 @@
     "development"
   ],
   "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "min-height: auto"
+        ]
+      }
+    ],
     "axe/name-role-value": [
       "default",
       {
