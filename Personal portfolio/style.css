@@ -1,0 +1,1047 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif; /* Default font */
+}
+
+:root {
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+    --dark-main-color: #0077b6; /* Slightly darker main color for effects */
+    --grey-color: #6d6a68;
+    --black-color: #040404;
+    --white-color: #fdfdfc;
+    --darkgrey-color: #242221;
+    --glass-bg: rgba(255, 255, 255, 0.05); /* For potential glassmorphism */
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: .3s;
+}
+
+.header.sticky {
+    background: var(--bg-color); /* Slightly darker when sticky */
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
+
+.logo {
+    font-size: 2.8rem;
+    color: var(--text-color);
+    font-weight: 700;
+    font-family: 'Oxanium', monospace; /* Cyber-themed font for logo */
+    letter-spacing: 0.1rem;
+}
+
+.navbar a {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 3.5rem;
+    transition: .3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none; /* Hidden by default, shown on smaller screens */
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content on larger screens */
+    flex-wrap: wrap; /* Allow content to wrap */
+    padding: 0 9%;
+    background: url('/images/home2.jpeg') no-repeat center center / cover; /* Background image */
+}
+
+.home-content {
+    max-width: 60rem;
+    z-index: 99;
+    text-align: center; /* Center text for consistency */
+    margin-right: 4rem; /* Space between content and image on large screens */
+}
+
+.home-content h1 {
+    font-size: 6.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+    font-family: 'Oxanium', monospace; /* Cyber-themed font */
+}
+
+.home-content h1 span {
+    color: var(--main-color); /* Highlight name */
+}
+
+.home-content .text-animate {
+    position: relative;
+    width: fit-content; /* Adjusted to fit content */
+    max-width: 100%; /* Ensures it doesn't overflow */
+    margin: 0 auto; /* Center text animate */
+    height: 4rem; /* Give it a fixed height to prevent layout shift during animation */
+    overflow: hidden; /* Hide overflowing text during transition */
+}
+
+.home-content .text-animate h3 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1.2px var(--main-color); /* Thicker stroke */
+    font-family: 'Oxanium', monospace; /* Cyber-themed font */
+    opacity: 1; /* Default opacity */
+    transform: translateY(0); /* Default position */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for animation */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Animation classes for text switching */
+.home-content .text-animate h3.fade-out {
+    opacity: 0;
+    transform: translateY(-20px); /* Move up slightly while fading out */
+}
+
+.home-content .text-animate h3.fade-in {
+    opacity: 1;
+    transform: translateY(0); /* Slide back to original position */
+}
+
+
+.hero-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 0.8rem; /* Slightly rounded corners */
+    object-fit: cover;
+    border: 2px solid var(--main-color); /* Stronger border */
+    box-shadow: 0 0 20px var(--main-color), 0 0 40px var(--dark-main-color); /* Glowing effect */
+    margin: 2rem 0; /* Adjust margin */
+    animation: floatImage 4s ease-in-out infinite; /* Keep float animation */
+}
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.home-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 4rem;
+    line-height: 1.6;
+}
+
+.btn-box {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center buttons */
+    gap: 2rem; /* Space between buttons */
+    width: 100%; /* Take full width */
+    max-width: 38rem; /* Max width for button box */
+    height: 5rem;
+    margin: 0 auto; /* Center button box */
+    flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+/* Specific styling for the new download CV button box */
+.btn-box.download-cv-btn {
+    margin-top: 2rem; /* Add space between the two rows of buttons */
+    height: auto; /* Adjust height dynamically for single button */
+}
+
+.btn-box .btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 100%;
+    background: var(--main-color); /* Solid main color */
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--bg-color); /* Text color contrasting with main color */
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+    box-shadow: 0 0 10px var(--main-color); /* Subtle glow */
+}
+
+.btn-box .btn:hover {
+    color: var(--text-color); /* Text color changes on hover */
+    box-shadow: 0 0 20px var(--main-color), 0 0 40px var(--dark-main-color); /* More prominent glow */
+}
+
+.btn-box .btn:nth-child(2) {
+    background: transparent;
+    color: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2):hover {
+    color: var(--bg-color); /* Changes to background color on hover */
+}
+
+.btn-box .btn:nth-child(2)::before {
+    background: var(--main-color);
+}
+
+.btn-box .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0; /* Starts at 0 width */
+    height: 100%;
+    background: var(--second-bg-color); /* Secondary background for hover fill */
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn-box .btn:hover::before {
+    width: 100%; /* Fills 100% on hover */
+}
+
+/* Removed home-sci styles as they are no longer in the home section */
+
+.home-imgHover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    background: transparent;
+    transition: 3s;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    background: var(--second-bg-color);
+    padding-bottom: 6rem;
+}
+
+.heading {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-family: 'Oxanium', monospace; /* Cyber-themed font */
+}
+
+span {
+    color: var(--main-color);
+}
+
+.about-img {
+    position: relative;
+    width: 28rem; /* Slightly larger */
+    height: 28rem; /* Slightly larger */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem; /* Space below image */
+}
+
+.about-img img {
+    width: 90%;
+    border-radius: 50%;
+    border: .2rem solid var(--main-color);
+    box-shadow: 0 0 15px var(--main-color), 0 0 30px var(--dark-main-color); /* Glowing effect */
+}
+
+.about-img .circle-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-top: .2rem solid var(--second-bg-color);
+    border-bottom: .2rem solid var(--second-bg-color);
+    border-left: .2rem solid var(--main-color);
+    border-right: .2rem solid var(--main-color);
+    animation: rotateSpin 8s linear infinite; /* Added rotation animation */
+}
+
+@keyframes rotateSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+.about-content {
+    text-align: center;
+    max-width: 80rem; /* Constrain width for better readability */
+}
+
+.about-content h3 {
+    font-size: 2.8rem; /* Slightly larger */
+    margin-bottom: 1rem;
+    font-family: 'Oxanium', monospace; /* Cyber-themed font */
+}
+
+.about-content p {
+    font-size: 1.7rem; /* Slightly larger */
+    margin: 2rem 0 3rem;
+    line-height: 1.7; /* Better line spacing */
+    padding: 0 2rem; /* Add some padding */
+}
+
+.btn-box.btns {
+    display: inline-block;
+    width: auto; /* Adjust width as needed */
+}
+
+.btn-box.btns a::before {
+    background: var(--second-bg-color);
+}
+
+/* Education Section */
+.education {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: auto;
+    padding-bottom: 5rem;
+}
+
+.education .education-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+    justify-content: center; /* Center columns */
+}
+
+.education-row .education-column {
+    flex: 1 1 45rem; /* Allow columns to grow/shrink */
+    max-width: 50rem; /* Max width for better layout */
+}
+
+.education-column .title {
+    font-size: 2.8rem; /* Slightly larger */
+    margin: 0 0 2rem 0; /* Adjust margin */
+    text-align: center;
+    font-family: 'Oxanium', monospace; /* Cyber-themed font */
+}
+
+.education-column .education-box {
+    border-left: .2rem solid var(--main-color);
+    padding-left: 1.5rem; /* Add padding for content */
+}
+
+.education-box .education-content {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem; /* Space between content blocks */
+}
+
+.education-box .education-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1.1rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--main-color);
+    border-radius: 50%;
+    border: .2rem solid var(--second-bg-color); /* Outline for the circle */
+    z-index: 1; /* Ensure it's above the line */
+}
+
+.education-content .content {
+    position: relative;
+    padding: 2rem; /* Increased padding */
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem; /* Slightly more rounded */
+    margin-bottom: 2rem;
+    background: var(--second-bg-color); /* Background for content box */
+    box-shadow: 0 0 15px rgba(0, 171, 240, 0.3); /* Subtle glow */
+    transition: .5s;
+    overflow: hidden;
+}
+
+.education-content .content:hover {
+    box-shadow: 0 0 25px rgba(0, 171, 240, 0.6); /* More prominent glow on hover */
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.education-content .content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-color); /* Darker background on hover */
+    z-index: -1;
+    transition: .5s;
+}
+
+.education-content .content:hover::before {
+    width: 100%;
+}
+
+.education-content .content .year {
+    font-size: 1.6rem; /* Slightly larger */
+    color: var(--main-color);
+    padding-bottom: .8rem; /* Increased padding */
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.education-content .content .year i {
+    font-size: 1.8rem;
+}
+
+.education-content .content h3 {
+    font-size: 2.2rem; /* Larger heading */
+    margin-bottom: .8rem;
+    font-family: 'Oxanium', monospace; /* Cyber-themed font */
+}
+
+.education-content .content p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+/* Skills Section */
+.skills {
+    min-height: auto;
+    padding-bottom: 7rem;
+    background: var(--second-bg-color);
+}
+
+.skills .skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+    justify-content: center; /* Center columns */
+}
+
+.skills-row .skills-column {
+    flex: 1 1 45rem; /* Allow columns to grow/shrink */
+    max-width: 50rem; /* Max width for better layout */
+}
+
+.skills-column .title {
+    font-size: 2.8rem; /* Slightly larger */
+    margin: 0 0 2rem 0; /* Adjust margin */
+    text-align: center;
+    font-family: 'Oxanium', monospace; /* Cyber-themed font */
+}
+
+.skills-box .skills-content {
+    position: relative;
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem; /* Slightly more rounded */
+    padding: 1.5rem 2rem; /* Increased padding */
+    z-index: 1;
+    overflow: hidden;
+    background: var(--bg-color); /* Background for skill box */
+    box-shadow: 0 0 15px rgba(0, 171, 240, 0.3); /* Subtle glow */
+    transition: .5s;
+}
+
+.skills-box .skills-content:hover {
+    box-shadow: 0 0 25px rgba(0, 171, 240, 0.6); /* More prominent glow on hover */
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.skills-box .skills-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color); /* Secondary background for hover */
+    z-index: -1;
+    transition: .5s;
+}
+
+.skills-box .skills-content:hover::before {
+    width: 100%;
+}
+
+.skills-content .progress {
+    padding: 1.5rem 0; /* Increased padding */
+}
+
+.skills-content .progress h3 {
+    font-size: 1.8rem; /* Slightly larger */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align icon and text vertically */
+    margin-bottom: .5rem;
+    font-family: 'Oxanium', monospace; /* Cyber-themed font */
+}
+
+.skills-content .progress h3 i {
+    font-size: 2rem; /* Adjust icon size */
+    margin-right: .8rem; /* Space between icon and text */
+    color: var(--main-color); /* Color for icons */
+}
+
+.skills-content .progress h3 span {
+    color: var(--text-color);
+}
+
+.skills-content .progress .bar {
+    height: 2.8rem; /* Slightly taller bar */
+    border-radius: .6rem;
+    border: .2rem solid var(--main-color);
+    padding: .3rem; /* Adjusted padding */
+    margin: 1rem 0;
+    background: var(--darkgrey-color); /* Darker background for the bar track */
+}
+
+.skills-content .progress .bar span {
+    display: block;
+    height: 100%;
+    border-radius: .3rem;
+    background: var(--main-color); /* Main color for the filled bar */
+    box-shadow: 0 0 8px var(--main-color); /* Subtle glow on the filled bar */
+}
+
+/* Programming skills percentages */
+.skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span { width: 80%; }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span { width: 80%; }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span { width: 65%; }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span { width: 65%; }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(5) .bar span { width: 69%; }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(6) .bar span { width: 78%; }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(7) .bar span { width: 80%; }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(8) .bar span { width: 84%; }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(9) .bar span { width: 66%; }
+.skills-column:nth-child(1) .skills-content .progress:nth-child(10) .bar span { width: 70%; } /* PHP */
+.skills-column:nth-child(1) .skills-content .progress:nth-child(11) .bar span { width: 60%; } /* Linux */
+
+
+/* Professional skills percentages */
+.skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span { width: 69%; }
+.skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span { width: 80%; }
+.skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span { width: 84%; }
+.skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span { width: 80%; }
+.skills-column:nth-child(2) .skills-content .progress:nth-child(5) .bar span { width: 69%; }
+.skills-column:nth-child(2) .skills-content .progress:nth-child(6) .bar span { width: 60%; }
+.skills-column:nth-child(2) .skills-content .progress:nth-child(7) .bar span { width: 60%; }
+.skills-column:nth-child(2) .skills-content .progress:nth-child(8) .bar span { width: 78%; }
+.skills-column:nth-child(2) .skills-content .progress:nth-child(9) .bar span { width: 60%; }
+.skills-column:nth-child(2) .skills-content .progress:nth-child(10) .bar span { width: 70%; } /* Virtualization */
+
+/* Projects Section */
+.projects {
+    min-height: auto;
+    padding-bottom: 7rem;
+    background: var(--bg-color); /* Main background color */
+    text-align: center;
+}
+
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 3rem; /* Space between project cards */
+    max-width: 1200px; /* Max width for the grid */
+    margin: 0 auto; /* Center the grid */
+    padding-top: 2rem;
+}
+
+.project-box {
+    background: var(--second-bg-color); /* Background for each project card */
+    border-radius: 1rem;
+    padding: 2.5rem;
+    box-shadow: 0 0 20px rgba(0, 171, 240, 0.2); /* Subtle glow */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+    border: .2rem solid var(--second-bg-color); /* Subtle border */
+    overflow: hidden;
+}
+
+.project-box:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 0 30px rgba(0, 171, 240, 0.5); /* More prominent glow */
+    border-color: var(--main-color); /* Highlight border on hover */
+}
+
+.project-box img {
+    width: 100%;
+    max-height: 200px; /* Max height for project images */
+    object-fit: cover;
+    border-radius: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-box h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-family: 'Oxanium', monospace; /* Cyber-themed font */
+}
+
+.project-box p {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.project-box .btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--main-color);
+    color: var(--bg-color);
+    border-radius: .6rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    transition: .3s;
+    box-shadow: 0 0 10px rgba(0, 171, 240, 0.4);
+}
+
+.project-box .btn:hover {
+    background: var(--dark-main-color);
+    box-shadow: 0 0 20px rgba(0, 171, 240, 0.8);
+}
+
+
+/* Contact Section */
+.contact {
+    min-height: auto;
+    padding-bottom: 7rem;
+    background: var(--second-bg-color);
+}
+
+.contact form {
+    max-width: 70rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact form .input-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box .input-field {
+    position: relative;
+    width: 49%;
+    margin: .8rem 0;
+}
+
+.contact form .input-box .input-field input,
+.contact form .textarea-field textarea {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: transparent;
+    border-radius: .6rem;
+    border: .2rem solid var(--main-color);
+    box-shadow: 0 0 8px rgba(0, 171, 240, 0.2); /* Subtle glow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact form .input-box .input-field input:focus,
+.contact form .textarea-field textarea:focus {
+    border-color: var(--dark-main-color);
+    box-shadow: 0 0 15px rgba(0, 171, 240, 0.6);
+}
+
+.contact form .input-box .input-field input::placeholder,
+.contact form .textarea-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Lighter placeholder text */
+}
+
+.contact form .focus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color);
+    border-radius: .6rem;
+    z-index: -1;
+    transition: .5s;
+}
+
+.contact form .input-box .input-field input:focus~.focus,
+.contact form .input-box .input-field input:valid~.focus,
+.contact form .textarea-field textarea:focus~.focus,
+.contact form .textarea-field textarea:valid~.focus {
+    width: 100%;
+}
+
+.contact form .textarea-field {
+    position: relative;
+    margin: .8rem 0 2.7rem;
+    display: flex;
+}
+
+.contact form .textarea-field textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 150px; /* Minimum height for textarea */
+}
+
+.contact form .btn-box.btns {
+    cursor: pointer;
+    margin-bottom: 3rem; /* Add space below the submit button */
+}
+
+/* New styles for social media icons in Contact Me section */
+.contact-sci {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem; /* Space above social icons */
+}
+
+.contact-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem; /* Slightly larger icons */
+    height: 4.5rem; /* Slightly larger icons */
+    background: transparent;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 2.2rem; /* Larger icon font size */
+    color: var(--main-color);
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 0 10px var(--main-color); /* Subtle glow */
+    transition: .5s;
+}
+
+.contact-sci a:hover {
+    color: var(--bg-color);
+    box-shadow: 0 0 20px var(--main-color); /* More prominent glow */
+}
+
+.contact-sci a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--main-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.contact-sci a:hover::before {
+    width: 100%;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: var(--second-bg-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-text p {
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+.footer-iconTop a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 0 10px var(--main-color); /* Subtle glow */
+    transition: .5s;
+}
+
+.footer-iconTop a:hover {
+    box-shadow: 0 0 20px var(--main-color); /* More prominent glow */
+}
+
+.footer-iconTop a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.footer-iconTop a:hover::before {
+    width: 100%;
+}
+
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: var(--bg-color);
+    transition: .5s;
+}
+
+.footer-iconTop a:hover i {
+    color: var(--main-color);
+}
+
+/* Breakpoints */
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+    .home-content h1 {
+        font-size: 5.5rem; /* Adjust for slightly smaller screens */
+    }
+}
+
+@media (max-width: 991px) {
+    .header {
+        padding: 2rem 4%;
+    }
+    section {
+        padding: 10rem 4% 2rem;
+    }
+    .home {
+        padding: 0 4%;
+        flex-direction: column-reverse; /* Stack home content and image */
+        text-align: center;
+    }
+    .home-content {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 4rem; /* Add space below content */
+        max-width: 100%; /* Take full width */
+    }
+    .hero-image {
+        margin-top: 5rem; /* Push image down from header */
+    }
+    /* Removed home-sci media query styles */
+    .footer {
+        padding: 2rem 4%;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .footer-iconTop {
+        margin-top: 1.5rem;
+    }
+    .project-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min-width for projects */
+    }
+    /* Adjust buttons on smaller screens */
+    .btn-box {
+        flex-direction: column; /* Stack buttons vertically */
+        height: auto;
+        gap: 1.5rem;
+    }
+    .btn-box .btn {
+        width: 100%; /* Full width buttons */
+    }
+    .btn-box.download-cv-btn {
+        margin-top: 1.5rem; /* Reduce top margin for stacked buttons */
+    }
+    .contact-sci {
+        margin-top: 2rem; /* Adjust margin for contact social icons */
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        background: var(--bg-color);
+    }
+    #menu-icon {
+        display: block; /* Show menu icon */
+    }
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%; /* Hidden by default */
+        width: 100%;
+        padding: 1rem 4%;
+        background: var(--main-color); /* Main color for mobile menu */
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+        z-index: 1;
+        transition: .25s ease;
+        transition-delay: .25s;
+    }
+    .navbar.active {
+        left: 0; /* Show menu */
+        transition-delay: 0s;
+    }
+    .navbar .active-nav {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-color); /* Background for the active nav item in mobile */
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        z-index: -1;
+        transition: .25s ease;
+        transition-delay: 0s;
+    }
+    .navbar.active .active-nav {
+        left: 0;
+        transition-delay: .25s;
+    }
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        transform: translateX(-20rem); /* Slide in from left */
+        transition: .25s ease;
+        transition-delay: 0s;
+    }
+    .navbar.active a {
+        transform: translateX(0); /* Slide to original position */
+        transition-delay: .25s;
+    }
+    .home-imgHover {
+        pointer-events: none;
+        background: var(--bg-color);
+        opacity: .6;
+        width: 100%; /* Take full width on mobile */
+        height: 25rem; /* Fixed height for hover area */
+        position: static; /* Remove absolute positioning */
+    }
+    .education-row,
+    .skills-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .education-column,
+    .skills-column {
+        width: 100%;
+        max-width: 90%; /* Adjust max-width for columns */
+    }
+    .contact form .input-box .input-field {
+        width: 100%; /* Stack input fields */
+    }
+}
+
+@media (max-width: 520px) {
+    html {
+        font-size: 45%; /* Even smaller base font size */
+    }
+    .home-content h1 {
+        font-size: 4.5rem; /* Adjust font size */
+    }
+    .home-content .text-animate h3 {
+        font-size: 2.5rem; /* Adjust font size */
+    }
+    .btn-box {
+        flex-direction: column; /* Stack buttons vertically */
+        height: auto;
+        gap: 1.5rem;
+    }
+    .btn-box .btn {
+        width: 100%; /* Full width buttons */
+    }
+    .about-img {
+        width: 22rem; /* Smaller about image */
+        height: 22rem;
+    }
+    .heading {
+        font-size: 4rem; /* Smaller heading font size */
+    }
+    .project-container {
+        grid-template-columns: 1fr; /* Single column layout for projects */
+    }
+}
+
+@media (max-width: 462px) {
+    .home-content h1 {
+        font-size: 3.5rem;
+    }
+    .home-content .text-animate h3 {
+        font-size: 2rem;
+    }
+    /* Removed home-sci media query styles */
+    .contact-sci {
+        width: 140px; /* Adjust width for smaller screens if needed */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .contact-sci a {
+        width: 3.5rem; /* Adjust size for smaller screens */
+        height: 3.5rem;
+        font-size: 1.8rem;
+    }
+    .about-img {
+        width: 18rem;
+        height: 18rem;
+    }
+    .about-content h3 {
+        font-size: 2.2rem;
+    }
+    .education-column .title,
+    .skills-column .title {
+        font-size: 2.2rem;
+    }
+}
